@@ -1,0 +1,25 @@
+{{ template "base" . }}
+
+{{ define "title" }}Home{{ end }}
+
+{{ define "main" }}
+<h2>Latest Snippets</h2>
+  {{ if .Snippets }}
+    <table>
+      <thead>
+        <th>Title</th>
+        <th>Created</th>
+        <th>ID</th>
+      </thead>
+      {{ range .Snippets }}
+        <tr>
+          <td><a href="/snippet/{{ .ID }}">{{ .Title }}</a></td>
+          <td>{{ humanDate .Created }}</td>
+          <td>{{ .ID }}</td>
+        </tr>
+      {{ end }}
+    </table>
+  {{ else }}
+    <p>Nothing to see here</p>
+  {{ end }}
+{{ end }}
